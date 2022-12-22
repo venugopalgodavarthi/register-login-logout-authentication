@@ -1,23 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Home</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+        }
+
+        .welcome-container {
+            width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: block;
+            width: 200px;
+            margin: 0 auto;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>welcome to home page</h1>
-    {% if user.is_authenticated %}
-    <h3> Haii Mr. {{user.username}} </h3>
-    <h4><a href="{% url 'demo1:logout' %}"><button>logout</button></a></h4>
 
-    {%else%}
-    <h3> you are not logged in </h3>
-    <h4><a href="{% url 'demo1:loginview' %}"><button>login</button></a></h4>
+    <div class="welcome-container">
+        <h1>Welcome to Our App</h1>
+        {% if user.is_authenticated %}
+        <h3> Haii Mr/Ms {{user.username|title}} </h3>
+        <h4><a href="{% url 'demo1:logout' %}" class="btn">Logout</a></h4>
 
-    {% endif %}
+        {%else%}
+        <h4><a href="{% url 'demo1:loginview' %}" class="btn">Login</a></h4>
+        <h4><a href="{% url 'demo1:register' %}" class="btn">Register</a></h4>
+
+        {% endif %}
+        <p>Thank you for choosing our app. We hope you have a great experience using it.</p>
+    </div>
 
 
 </body>
+
 </html>

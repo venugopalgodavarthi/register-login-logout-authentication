@@ -10,12 +10,14 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+import pymysql
 from pathlib import Path
 import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-TEMPLATES_DIRS=os.path.join(BASE_DIR,'templates')
-TEMPLATES_DEMO1_DIRS=os.path.join(os.path.join(BASE_DIR,'demo1'),'templates')
+TEMPLATES_DIRS = os.path.join(BASE_DIR, 'templates')
+TEMPLATES_DEMO1_DIRS = os.path.join(
+    os.path.join(BASE_DIR, 'demo1'), 'templates')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -37,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles','demo1',
+    'django.contrib.staticfiles', 'demo1',
 ]
 
 MIDDLEWARE = [
@@ -55,7 +57,7 @@ ROOT_URLCONF = 'pro9.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATES_DIRS,TEMPLATES_DEMO1_DIRS],
+        'DIRS': [TEMPLATES_DIRS, TEMPLATES_DEMO1_DIRS],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -73,18 +75,17 @@ WSGI_APPLICATION = 'pro9.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-import pymysql
-pymysql.version_info=(1,4,2,'finall',0)
+pymysql.version_info = (1, 4, 2, 'finall', 0)
 pymysql.install_as_MySQLdb()
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'djproo9',
-        'USER':'root',
-        'PASSWORD':'root',
-        'HOST':'localhost',
-        'PORT':'3306',
+        'USER': 'root',
+        'PASSWORD': 'root',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
@@ -132,5 +133,5 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL='home'
-LOGOUT_REDIRET_URL='welcome'
+LOGIN_REDIRECT_URL = 'login'
+LOGOUT_REDIRET_URL = 'welcome'
